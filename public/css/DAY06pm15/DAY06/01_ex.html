@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#parent{
+			  border:2px solid #f00;
+				display:flex;
+/*				flex-direction:row;*/
+/*				flex-wrap:wrap-reverse;*/
+				flex-flow:row-reverse nowrap;
+				justify-content:flex-end;
+			}
+			.d1,.d2,.d3{
+				width:200px;height:200px;
+				background:#ffa;
+			}
+			.d2{background:#aff;}
+			.d3{background:#faf;float:right}
+		</style>
+	</head>
+	<body>
+		<div id="parent">
+			<span class="d1">1</span>
+			<span class="d2">2</span>
+			<div class="d3">3</div>
+		</div>
+	</body>
+</html>

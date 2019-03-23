@@ -1,0 +1,284 @@
+var jq = jQuery.noConflict();
+var Common = {
+    init: function() {
+        this.cnzzHide();
+        this.contextHander();
+        this.serviceInit("#explore-link", "#explore-menu", "#support-menu");
+        this.serviceInit("#support-link", "#support-menu", "#explore-menu");
+        this.replaceMailto();
+        this.showForum();
+        this.setForumUrl();
+        this.scrollInit();
+        this.setIcon();
+        this.setFooterSns();
+        this.setMenu();
+        this.setSubMenu();
+    },
+    setSubMenu: function() {
+         jq('.m-has-children').click(function() {
+             jq(this).toggleClass('m-open');
+             jq(this).siblings('.nav-menu').toggleClass('m-open');
+             jq(this).parent('li').siblings().find('.nav-menu,.m-has-children').removeClass('m-open');
+        });
+         jq(window).on('scroll', function() {
+             jq('.m-has-children, .nav-menu').removeClass('m-open');
+        })
+    },
+    setMenu: function() {
+        var menuWrap = jq(".nav-menu"),
+            minHeight = 44;
+        jq(window).on("scroll", function() {
+            jq('.m-has-children').removeClass('m-open');
+            jq('.m-sub-menu').removeClass('m-open');
+            var scrollTop = jq(window).scrollTop();
+            var e = scrollTop > minHeight;
+            if (e) {
+                menuWrap.addClass("stick").css('top', 0);
+            } else {
+                menuWrap.removeClass("stick").css('top', '44px');
+            }
+        })
+        var scrollTop = jq(window).scrollTop();
+        if (scrollTop > minHeight) {
+            menuWrap.addClass("stick").css('top', 0);
+        } else {
+            menuWrap.removeClass("stick").css('top', '44px');
+        }
+    },
+    setIcon: function() {
+        var bot_icon = jq("#chat-gem"),
+            top_icon = jq(".nav-icon-light");
+        bot_icon.click(function() {
+            jq(this).toggleClass("activited");
+        })
+        top_icon.click(function() {
+            jq(this).toggleClass("activited");
+        })
+    },
+    setFooterSns: function() {
+        // jq.ajax({
+        //  type: 'GET',
+        //        async: false,
+        //        //url: 'http://diablo3.nos.netease.com/1/v1/json/homeSider.json',
+        //        url: 'http://diablo3.nos.netease.com/2/Homeright/homeSider.json',
+        //        jsonp: 'callback',
+        //        jsonpCallback: 'homeSideJson',
+        //        dataType: 'jsonp',
+        //  success: function(json){
+        //      var html='';
+
+        //      for(var i=0; i<json.partners.length; i++){
+        //          html+='<li><a href="'+ json.partners[i].link +'" target="_blank">'+ json.partners[i].title +'</a></li>';
+        //      }
+
+        //      jq('#joinerList').prepend(html);
+
+        //      jq('.business .icon-more').toggle(function() {
+        //         jq('.joiner').show();
+        //         jq(this).addClass('hidden');
+        //      },function(){
+        //          jq('.joiner').hide();
+        //          jq(this).removeClass('hidden');
+        //      });
+        //  }
+        // });
+
+        jq('.business .icon-more').toggle(function() {
+            jq('.joiner').show();
+            jq(this).addClass('hidden');
+        }, function() {
+            jq('.joiner').hide();
+            jq(this).removeClass('hidden');
+        });
+
+    },
+    scrollInit: function() {
+        var navWrap = jq("#navWrap"),
+            scrollTop = jq(window).scrollTop();
+
+
+        if (scrollTop <= 195) {
+            navWrap.css({
+                "position": "absolute",
+                "top": "195px"
+            })
+        } else {
+            navWrap.css({
+                "position": "fixed",
+                "top": "-10px"
+            })
+        }
+
+
+        jq(window).scroll(function() { //设置滚动时候的导航样式
+            scrollTop = jq(window).scrollTop();
+
+            if (scrollTop <= 195) {
+                navWrap.css({
+                    "position": "absolute",
+                    "top": "195px"
+                })
+            } else {
+                navWrap.css({
+                    "position": "fixed",
+                    "top": "-10px"
+                })
+            }
+        });
+    },
+    setForumUrl: function() {
+        jq('.fl_area').click(function() {
+            window.location.href = jq(this).attr('rel');
+        })
+    },
+    showForum: function() {
+        jq('.bm_h span').click(function() {
+            jq(this).toggleClass('c').parent().siblings('div').stop().slideToggle();
+        })
+    },
+    ieVersion: function(v) {
+        var userAgent = window.navigator.userAgent.toLowerCase();
+        var re = RegExp("msie " + v + "\.0", "i");
+        return jq.browser.msie && re.test(userAgent);
+    },
+    addFlash: function(path, id, w, h) {
+        var params = {
+            menu: "false",
+            allowFullScreen: "false",
+            allowScriptAccess: "true",
+            wmode: "transparent",
+            base: "."
+        };
+        if (arguments[4] == "music") {
+            params.wmode = "window"
+        };
+        //if(Common.hasFlash()){
+        swfobject.embedSWF(path, id, w, h, "9.0.0", "", "", params);
+        //}     
+    },
+    hasFlash: function() {
+        if ((typeof navigator.plugins != "undefined" && typeof navigator.plugins["Shockwave Flash"] == "object") || (window.ActiveXObject && (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) != false)) {
+            return true;
+        }
+        return false;
+    },
+    callFlash: function(id, v) {
+        var flashObj;
+        if (navigator.appName.indexOf("Microsoft") != -1) {
+            flashObj = window[id];
+        } else {
+            flashObj = document[id];
+        }
+        flashObj.dogame(v);
+    },
+    setFlashHover: function(element, id) {
+        var el = jq(element);
+        el.hover(function() {
+            var t = jq(this),
+                v = "over";
+            Common.callFlash(id, v);
+        }, function() {
+            var t = jq(this),
+                v = "out";
+            Common.callFlash(id, v);
+        })
+    },
+    setEvent: function() {
+        if (Common.isMobile()) {
+            return "touchstart";
+        }
+        return "click";
+    },
+    setFastClick: function() {
+        FastClick.attach(document.body);
+    },
+    isIOS: function() {
+        var rule = /(iPhone|iPad|iPod)/ig;
+        return rule.test(navigator.userAgent);
+    },
+    isMobile: function() {
+        var rule = /(android|iPhone|iPad|iPod|mobile)/ig;
+        return rule.test(navigator.userAgent);
+    },
+    cnzzHide: function() {
+        var cnzz = jq("a[title='站长统计']");
+        cnzz.hide();
+    },
+    serviceInit: function(obj, trigger, hideObj) {
+        var link = jq(obj),
+            trigger = jq(trigger),
+            hideObj = jq(hideObj),
+            timer, timer2;
+
+        link.click(function() {
+            trigger.toggle();
+            hideObj.hide();
+            return false;
+        })
+        link.mouseleave(function() {
+            timer = setTimeout(function() {
+                trigger.hide();
+            }, 1000);
+
+        })
+        link.mouseenter(function() {
+            clearTimeout(timer);
+
+        })
+        trigger.mouseleave(function() {
+            jq(this).hide();
+        })
+        trigger.mouseenter(function() {
+            clearTimeout(timer);
+        })
+    },
+    contextHander: function() {
+        var contextBtn = jq(".context-link");
+        var contextCon = jq(".ui-context");
+        var closeBtn = contextCon.find(".close");
+        var tagName = jq(".context-user");
+        if (tagName) {
+            tagName.each(function(i) {
+                var fullTagName = jq(this).html();
+                if (fullTagName.indexOf("#") != -1) {
+                    var bmUserName = fullTagName.substring(0, fullTagName.indexOf("#"));
+                    var tagNameId = fullTagName.substring(fullTagName.indexOf("#"));
+                    if (jq(this).hasClass("context-link-admin")) {
+                        jq(this).html("<span>" + bmUserName + "</span>");
+                    } else {
+                        jq(this).html("<span>" + bmUserName + "</span>" + tagNameId);
+                    }
+                }
+            })
+        }
+        var timer;
+        contextBtn.live("click", function() {
+            jq(this).prev().show();
+            return false;
+        })
+        // contextBtn.mouseout(function() {
+        //     var t = jq(this);
+        //     timer = setTimeout(function() {
+        //         t.prev().hide();
+        //     }, 500);
+        // })
+        contextCon.mouseenter(function() {
+            clearTimeout(timer);
+        })
+        contextCon.mouseleave(function() {
+            jq(this).hide();
+        })
+        closeBtn.click(function() {
+            jq(this).parents(".ui-context").hide();
+        })
+    },
+    replaceMailto: function() {
+        var messageHasUrl = jq(".player a").not(".login");
+        if (messageHasUrl) {
+            messageHasUrl.each(function(i) {
+                var message = jq(this).text();
+                jq(this).replaceWith(message);
+            })
+        }
+    }
+}

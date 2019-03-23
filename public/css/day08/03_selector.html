@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8"/>
+		<style>
+/*			#d1{color:red;}*/
+/*			.my_color{color:red;}*/
+/*			.my_font{font-size:36px;}*/
+/*			.my_bg{background:yellow;}*/
+/*			h4.my_font{background:pink;}*/
+/*			div,p,#s1,p.my_font{*/
+/*				color:#006699;*/
+/*				background:#990066;*/
+/*			}*/
+/*			ul li a{color:red;}*/
+				div p span{color:red;}
+				div>p>span{color:yellow;}
+				div>span{color:#006699;}
+		</style>
+	</head>
+	<body>
+	<!--后代选择器  -->
+		<div>
+			<span>这是嵌套在div中span</span>
+			<h2>
+				<p>这是嵌套在div中的p
+					<span>这是p中的span</span>
+				</p>
+			</h2>
+		</div>
+<!--后代选择器  -->
+		<ul>
+			<li><a href="">蒙奇</a></li>
+			<li><a href="">鸣人</a></li>
+			<li><a href="">一护</a></li>
+			<li><a href="">佐助</a></li>
+			<li><a href="">黄忠</a></li>
+		</ul>
+		<a href="">猴子</a>
+		<a href="">小贱贱</a>
+<!--群组选择器  -->
+		<div>迪奥</div>
+		<p>香奈儿</p>
+		<span id="s1">MC</span>
+		<h4>大宝SOD</h4>
+<!--类选择器  -->
+		<div class="my_font my_color">爱就像你爸打你，你妈骂你</div>
+		<p class="my_font my_color my_bg">从不讲道理</p>
+		<h4 class="my_font">无处躲避</h4>
+		<footer class="my_font">总是让人始料不及</footer>
+<!--ID选择器 		 -->
+		<div id="d1">123</div>
+	</body>
+</html>

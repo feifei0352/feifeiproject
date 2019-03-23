@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>content</title>
+	<style>
+	  #p1,#p2,#p3{
+	   width:100px;
+	   height:100px;
+	   background:#f00;
+	   margin:0 5px;
+	   float:left;
+	  }
+	  #parent{
+	  width:330px;
+	  border:2px solid #0f0;
+	  }
+	  #parent::after{
+	   content:"";display:block;clear:both;
+	  }
+      #d1{width:150px;
+	      height:150px;
+		  background:#00f;
+	  }
+	  #d2{
+	  width:50px;
+	  height:50px;
+	  background:#f0f;
+	  margin-top:30px;
+	  }
+	  #d1::before{
+	   content:"";display:table;
+	  }
+	</style>
+</head>
+<body>
+    <div id="parent">
+	    <p id="p1"></p>
+		<p id="p2"></p>
+		<p id="p3"></p>
+	</div>
+	<div id="d1">
+	  <div id="d2"></div>
+	</div>
+	
+</body>
+</html>

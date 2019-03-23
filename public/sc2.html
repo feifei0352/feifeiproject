@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sc2</title>
+    <style>
+       body{margin:0;padding:0;
+           background-image:url('img/sc_bg2.jpg');
+       }
+       #nav{
+           height:100px;
+           background-image:url('img/scbg.jpg');
+           background-position: -500px 100px;
+       }
+       #top{
+           height:400px;
+           background-image:url('img/scbg.jpg');
+           background-position: -500px 0;
+           border-bottom: 1px solid rgba(255,255,255,.1);
+           outline: 1px solid #000;
+        }
+        #top img{
+            margin:38px 0 0 44px;
+            width:38%;
+            height:90%;
+        }
+        #main-body{
+            margin: 60px 80px 0 120px;
+            color:#fff;
+        }
+        #main-body>div.forum{
+            width:46%;
+            height:122px;
+            border:1px solid #ccc;
+            background-color: rgba(255,255,255,0.05);
+            box-shadow: 0 0 0 1px #222;
+            float:left;
+            margin-right:1%;
+            margin-left:1%;
+            margin-bottom: 1%;
+            border: solid 1px rgba(255,255,255,0.15);
+            cursor: pointer;
+        }
+        #main-body>div.forum:hover{
+            background-color: rgba(255,255,255,0.08);            
+            filter:brightness(1.5);
+        }
+        .forum>h3,.forum>p{
+            margin-left:15%;
+            margin-bottom: 0;
+        }
+        .forum>p{
+            color: rgba(255,255,255,0.5);
+            margin-top:1%;
+        }
+        #general1{
+            background-image:url('img/sc2/common_70_icon.png');
+            background-repeat:no-repeat;
+            background-size: 8%;
+            background-position: 4% 30%;
+        }
+        #general2{
+            background-image:url('img/sc2/common_71_icon.png');
+            background-repeat:no-repeat;
+            background-size: 8%;
+            background-position: 4% 30%;
+        }
+        #general3{
+            background-image:url('img/sc2/common_72_icon.png');
+            background-repeat:no-repeat;
+            background-size: 8%;
+            background-position: 4% 30%;
+        }
+        #general4{
+            background-image:url('img/sc2/common_73_icon.png');
+            background-repeat:no-repeat;
+            background-size: 8%;
+            background-position: 4% 30%;
+        }
+        #general5{
+            background-image:url('img/sc2/common_74_icon.png');
+            background-repeat:no-repeat;
+            background-size: 8%;
+            background-position: 4% 30%;
+        }
+        #general6{
+            background-image:url('img/sc2/common_75_icon.png');
+            background-repeat:no-repeat;
+            background-size: 8%;
+            background-position: 4% 30%;
+        }
+        .clear{clear:both;}
+    </style>
+</head>
+<body>
+    <div id="nav"></div>
+    <div id="contain">
+        <div id="top">
+            <img src="img/sc2_logo.png" alt="">
+        </div>
+        <div id="main">
+            <div id="main-body">
+                <h2>综合讨论</h2>
+                <div class="forum general_forum" id="general1">
+                    <h3>综合讨论区</h3>
+                    <p>讨论星际争霸2的一切</p>
+                </div>
+                <div class="forum grneral_forum" id="general2">
+                    <h3>客服支持区</h3>
+                    <p>客服人员在此记录和解答您的问题</p>
+                </div>
+                <div class="forum general_forum" id="general3">
+                    <h3>战友招募区</h3>
+                    <p>在这里发出你的招募队友的邀请把!</p>
+                </div>
+                <div class="forum grneral_forum" id="general4">
+                    <h3>活动讨论区</h3>
+                    <p>官方活动获奖名单公布、活动内容讨论</p>
+                </div>
+                <div class="forum grneral_forum" id="general5">
+                    <h3>汉化及配音讨论区</h3>
+                    <p>你可以在这里对国服的语言、文字等任何游戏内容改变进行讨论，我们的翻译团队也可能参与哦!</p>
+                </div>
+                <div class="clear"></div>
+                <h2>游戏讨论</h2>
+                <div class="forum game_forum" id="game1">
+                    <h3>人类讨论区</h3>
+                    <p>讨论人类的战略和战术</p>
+                </div>
+                <div class="forum game_forum" id="game2">
+                    <h3>星灵讨论区</h3>
+                    <p>讨论星灵的战略和战术</p>
+                </div>
+                <div class="forum game_forum" id="game3">
+                    <h3>异虫讨论区</h3>
+                    <p>讨论异虫的战略和战术</p>
+                </div>
+                <div class="forum game_forum" id="game4">
+                    <h3>多人游戏和电子竞技</h3>
+                    <p>讨论多人游戏、天梯和联赛</p>
+                </div>
+                <div class="forum game_forum" id="game5">
+                    <h3>战役讨论区</h3>
+                    <p>讨论单人战役和任务</p>
+                </div>
+                <div class="forum game_forum" id="game5">
+                    <h3>自定义地图讨论区</h3>
+                    <p>讨论自定义地图和地图编辑器</p>
+                </div>
+                <div class="forum game_forum" id="game5">
+                    <h3>故事背景讨论区</h3>
+                    <p>讨论星际争霸的背景故事</p>
+                </div>
+                <div class="forum game_forum" id="game5">
+                    <h3>游戏BUG及汉化问题报告区</h3>
+                    <p>在此提交您发现的游戏BUG和汉化问题</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
