@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        $.ajax({
+            url:'/post/sendforum',
+            type:'post',
+            datatype:'json',
+            data:{
+                game:1,
+                type:1,
+                contant:"哈哈哈哈哈",
+                title:"哈哈哈哈",
+                uid:3,
+                uname:"BLUE",
+                time:15564654113,
+                clisks:4
+            },
+            success:function(result){
+                console.log(result);
+            },error:function(error){
+                console.log(error);
+                alert("失败");
+            }
+        })
+    </script>
+
+</body>
+</html>
