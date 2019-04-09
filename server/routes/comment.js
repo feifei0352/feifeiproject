@@ -16,19 +16,14 @@ router.get("/getcomment",(req,res)=>{
 //发送评论
 router.post("/sendcomment",(req,res)=>{
      var obj=req.body;
-     obj.time=parseInt(Date.now()/1000);
-     var sql="INSERT INTO reply VALUES ( NULL";
-     var val=Object.values(obj);
-     for(let item of val){
-         sql+=`,'${item}'`;
-     }
-     sql+=");";
+     console.log(obj);
+     var sql="INSERT INTO reply SET ?";   
      pool.query(sql,[obj],(err,result)=>{
          if(err)console.log(err);
-         if(result.affectRows>0){
-             res.send({code:200,msg:"评论成功"});
+         if(result.affectedRows>0){
+             res.write({code:200,msg:"评论成功"});
          }else{
-             res.send({code:301,msg:"评论失败"});
+             res.write({code:301,msg:"评论失败"});
          }
      })
 })
